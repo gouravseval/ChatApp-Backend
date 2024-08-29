@@ -19,6 +19,9 @@ app.use(cookieParser())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/messages", messageRouter)
 app.use("/api/v1/", userRouter)
+app.listen("/",(req, res)=>{
+    res.send("backend is running")
+})
 dbConnection().then(()=>{
     server.listen(process.env.PORT, () => {
         console.log("Server is listening on port :", process.env.PORT)
