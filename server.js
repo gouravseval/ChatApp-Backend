@@ -19,8 +19,9 @@ app.use(cookieParser())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/messages", messageRouter)
 app.use("/api/v1/", userRouter)
-app.listen("/",(req, res)=>{
-    res.send("backend is running")
+app.get("/", async(req, res) => {
+   const html = "<p>Api is running...</p>"
+   res.send(html)
 })
 dbConnection().then(()=>{
     server.listen(process.env.PORT, () => {
