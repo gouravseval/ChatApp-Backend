@@ -9,7 +9,7 @@ import cors from "cors"
 import { app, server } from "./src/socket/socket.js"
 
 dotenv.config()
-dbConnection()
+
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true,
@@ -19,7 +19,8 @@ app.use(cookieParser())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/messages", messageRouter)
 app.use("/api/v1/", userRouter)
-
-server.listen(process.env.PORT, () => {
-    console.log("Server is listening on port :", process.env.PORT)
+dbConnection().then(()=>{
+    server.listen(process.env.PORT, () => {
+        console.log("Server is listening on port :", process.env.PORT)
+    })
 })
