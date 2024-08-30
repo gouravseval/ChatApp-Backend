@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173", 
+    origin: "https://chatappbygourav.netlify.app", 
     methods: ["GET", "POST"],
     credentials: true, 
 }));
@@ -14,7 +14,7 @@ app.use(cors({
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173", // Update this to your actual front-end URL
+        origin: "https://chatappbygourav.netlify.app", // Update this to your actual front-end URL
         methods: ["GET", "POST"],
         credentials: true, // Allow credentials
     },
