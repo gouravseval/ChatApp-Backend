@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors({
-    origin: "https://chatappbygourav.netlify.app", 
+    origin: ["https://chatappbygourav.netlify.app", "http://localhost:3000"],  
     methods: ["GET", "POST"],
     credentials: true, 
 }));
@@ -14,9 +14,9 @@ app.use(cors({
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://chatappbygourav.netlify.app", // Update this to your actual front-end URL
+        origin: ["https://chatappbygourav.netlify.app", "http://localhost:3000"], 
         methods: ["GET", "POST"],
-        credentials: true, // Allow credentials
+        credentials: true, 
     },
 });
 
@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
 
     if (userId !== undefined) {
         userSocketMap[userId] = socket.id;
-        socket.join(userId); // Optional: Join a room with userId
+        socket.join(userId);
         io.emit("onlineUsers", Object.keys(userSocketMap));
     } else {
         console.log(`User ID is undefined for socket ID ${socket.id}`);
