@@ -11,7 +11,7 @@ import { app, server } from "./src/socket/socket.js"
 dotenv.config()
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "https://chatappbygourav.netlify.app/",
     credentials: true,
 }))
 app.use(express.json())
