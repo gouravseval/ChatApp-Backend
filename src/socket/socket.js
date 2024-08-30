@@ -5,11 +5,10 @@ import cors from "cors";
 
 const app = express();
 
-// Allow CORS for the specific origin and enable credentials
 app.use(cors({
-    origin: "http://localhost:5173", // Update this to your actual front-end URL
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
-    credentials: true, // Allow cookies and credentials
+    credentials: true, 
 }));
 
 const server = http.createServer(app);
