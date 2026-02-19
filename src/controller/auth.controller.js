@@ -10,7 +10,6 @@ const register = asyncHandler(async (req, res) => {
     if ([username, email, password].some((field) => field?.trim() === "")) {
         throw new apiError(400, "All fields are required")
     }
-
     const user = await User.findOne({ email })
 
     if (user) {
@@ -44,9 +43,7 @@ const login = asyncHandler(async (req, res) => {
     if (!comparePassword) {
         throw new ApiResponse(400, "Email or username is correct")
     }
-
     generateToken(user._id, res)
-
     res.status(200).json({
         id: user._id,
         username: user.username,
